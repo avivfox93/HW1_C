@@ -44,7 +44,7 @@ void PictureManipulation()
 	}while(loop);
 }
 
-void PictureRotate(const int* mat, int clockwise, int size)
+void PictureRotate(int* mat, int clockwise, int size)
 {
 	int i,*res;
 	res = malloc(sizeof(int)*size*size);
@@ -55,28 +55,22 @@ void PictureRotate(const int* mat, int clockwise, int size)
 	matrixsqr_print(res,size);
 }
 
-void PictureFlipVertical(const int* mat, int size)
+void PictureFlipVertical(int* mat, int size)
 {
-	int i,*res;
-	res = malloc(sizeof(int)*size*size);
+	int i;
 	for(i = 0 ; i < size/2 ; i++)
-		matrix_swap_collums(mat,res,i,size-i-1,size);
-	if(size%2)
-		matrix_copy_colum(mat,res,size/2,size);
+		matrix_swap_collums(mat,i,size-i-1,size);
 	print_picture_after_message();
-	matrixsqr_print(res,size);
+	matrixsqr_print(mat,size);
 }
 
-void PictureFlipHerizontical(const int* mat, int size)
+void PictureFlipHerizontical(int* mat, int size)
 {
-	int i,*res;
-	res = malloc(sizeof(int)*size*size);
+	int i;
 	for(i = 0 ; i < size/2 ; i++)
-		matrix_swap_rows(mat,res,i,size-i-1,size);
-	if(size%2)
-		matrix_copy_row(mat,res,size/2,size);
+		matrix_swap_rows(mat,i,size-i-1,size);
 	print_picture_after_message();
-	matrixsqr_print(res,size);
+	matrixsqr_print(mat,size);
 }
 
 

@@ -11,8 +11,8 @@
 #define MATRIX_SIZE 3
 
 void PictureManipulation();
-void PictureRotate(const int*,int,int);
-void PictureFlipVertical(const int*,int);
-void PictureFlipHerizontical(const int*,int);
+void PictureRotate(int*,int,int);
+void PictureFlipVertical(int*,int);
+void PictureFlipHerizontical(int*,int);
 
 #endif /* PICTURE_MANIPULATE_H_ */
