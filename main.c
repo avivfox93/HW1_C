@@ -5,8 +5,8 @@
 #include <stdio.h>
 
 int main(){
-	int loop = 1;
 	char in;
+	int loop = 1;
 	do
 	{
 		print_main_message();

@@ -13,14 +13,15 @@
 
 void PictureManipulation()
 {
-	int loop;
-	int in;
+	int in,loop;
 	int* arr = matrixsqr_create(MATRIX_SIZE);
 	matrixsqr_print(arr,MATRIX_SIZE);
+	loop = 1;
 	do
 	{
 		print_picture_manipulate_message();
 		scanf("%d",&in);
+		printf("GOT: %d",in);
 		switch(in)
 		{
 		case 1:
@@ -42,7 +43,6 @@ void PictureManipulation()
 			break;
 		}
 	}while(loop);
-	return;
 }
 
 void PictureRotate(const int* mat, int clockwise, int size)
