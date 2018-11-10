@@ -68,23 +68,25 @@ void matrix_swap(int* mat, int n1, int m1, int n2, int m2, int rowsize)
 	*(mat + n2*rowsize + m2) = temp;
 }
 
-void matrix_swap_collums(const int* mat,int* res,int c1,int c2,int size)
+void matrix_swap_collums(int* mat,int c1,int c2,int size)
 {
 	int i;
 	for(i = 0 ; i < size ; i++)
 	{
-		*(res + c1 + i*size) =  *(mat + c2 + i*size);
-		*(res + c2 + i*size) = *(mat + c1 + i*size);
+		int temp = *(mat + c1 + i*size);
+		*(mat + c1 + i*size) =  *(mat + c2 + i*size);
+		*(mat + c2 + i*size) = temp;
 	}
 }
 
-void matrix_swap_rows(const int* mat, int* res, int r1, int r2, int size)
+void matrix_swap_rows(int* mat, int r1, int r2, int size)
 {
 	int i;
 	for(i = 0 ; i < size ; i++)
 	{
-		*(res + r1*size + i) = *(mat + r2*size + i);
-		*(res + r2*size + i) = *(mat + r1*size + i);
+		int temp = *(mat + r1*size + i);
+		*(mat + r1*size + i) = *(mat + r2*size + i);
+		*(mat + r2*size + i) = temp;
 	}
 }
 

@@ -10,8 +10,8 @@ int main(){
 	do
 	{
 		print_main_message();
-		in = getchar() | 0x20; // to lower case
-		switch(in)
+		scanf(" %c",&in);
+		switch(in | 0x20)
 		{
 		case 'p':
 			PictureManipulation();
@@ -28,6 +28,4 @@ int main(){
 	}while(loop);
 	puts(EXIT_MESSAGE);
 	return 0;
-	int* mat = matrixsqr_create(5);
-	matrixsqr_print(mat,5);
 }

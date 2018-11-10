@@ -20,8 +20,7 @@ void PictureManipulation()
 	do
 	{
 		print_picture_manipulate_message();
-		scanf("%d",&in);
-		printf("GOT: %d",in);
+		scanf(" %d",&in);
 		switch(in)
 		{
 		case 1:
