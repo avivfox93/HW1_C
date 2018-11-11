@@ -15,7 +15,6 @@ void matrix_print(const int*,int,int);
 void matrixsqr_print(const int*,int);
 void matrix_create(int*,int,int);
 void matrix_create_rand(int*,int,int);
-//int* matrix_game_create(int,int);
 int matrix_find_num(const int*,int,int,int);
 void matrix_rotate(int*,int,int);
 void matrixsqr_create(int*,int);

@@ -74,6 +74,17 @@ void matrix_swap_collums(int* mat,int c1,int c2,int size)
 	}
 }
 
+void matrix_swap_rows(int* mat, int r1, int r2, int size)
+{
+	int i;
+	for(i = 0 ; i < size ; i++)
+	{
+		int temp = *(mat + r1*size + i);
+		*(mat + r1*size + i) = *(mat + r2*size + i);
+		*(mat + r2*size + i) = temp;
+	}
+}
+
 void matrix_rotate(int* mat, int size, int clockwise)
 {
 	int i,j;
@@ -103,13 +114,3 @@ void matrix_rotate(int* mat, int size, int clockwise)
 		}
 }
 
-void matrix_swap_rows(int* mat, int r1, int r2, int size)
-{
-	int i;
-	for(i = 0 ; i < size ; i++)
-	{
-		int temp = *(mat + r1*size + i);
-		*(mat + r1*size + i) = *(mat + r2*size + i);
-		*(mat + r2*size + i) = temp;
-	}
-}

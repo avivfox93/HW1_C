@@ -1,7 +1,7 @@
 
 CC = gcc
 OBJS = main.o matrix_utils.o messages.o number_game.o picture_manipulate.o
-EXEC = hw1_avivfox
+EXEC = prog
 COMP_FLAG = -std=c99 -Wall -Werror
 
 $(EXEC) : $(OBJS)
