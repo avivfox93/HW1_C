@@ -18,8 +18,8 @@ void NumberGame()
 	int in,valid,*board,arr[N][M];
 	board = &arr[0][0];
 	matrix_create(board,N,M);
-//	int b[N][M] = {{1,2,3,4},{5,6,7,8},{9,10,11,12},{13,0,14,15}};
-//	int* board = (int*)b;
+//	int b[N][M] = {{1,2,3,4},{5,6,7,8},{9,10,11,12},{13,14,0,15}};
+//	board = (int*)b;
 	BoardShuffle(board,N,M);
 	do
 	{

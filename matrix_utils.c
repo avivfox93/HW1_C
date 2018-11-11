@@ -118,6 +118,6 @@ void matrix_flip(int* mat, int size, int vertical)
 {
 	int i;
 		for(i = 0 ; i < size/2 ; i++)
-			if(vertical) matrix_swap_collums(mat,i,size-i-1,size);
-			else matrix_swap_rows(mat,i,size-i-1,size);
+			if(vertical) matrix_swap_rows(mat,i,size-i-1,size);
+			else matrix_swap_collums(mat,i,size-i-1,size);
 }
