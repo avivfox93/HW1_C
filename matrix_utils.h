@@ -21,5 +21,6 @@ void matrixsqr_create(int*,int);
 void matrix_swap(int*,int,int,int,int,int);
 void matrix_swap_collums(int*,int,int,int);
 void matrix_swap_rows(int*,int,int,int);
+void matrix_flip(int*,int,int);
 
 #endif /* MATRIX_UTILS_H_ */

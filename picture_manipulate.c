@@ -25,16 +25,16 @@ void PictureManipulation()
 		switch(in)
 		{
 		case 1:
-			PictureRotate(arr,MATRIX_SIZE,1);
+			PictureRotate(arr,MATRIX_SIZE,CLOCKWISE);
 			break;
 		case 2:
-			PictureRotate(arr,MATRIX_SIZE,0);
+			PictureRotate(arr,MATRIX_SIZE,CCLOCKWISE);
 			break;
 		case 3:
-			PictureFlipHerizontical(arr,MATRIX_SIZE);
+			PictureFlip(arr,MATRIX_SIZE,VERTICAL);
 			break;
 		case 4:
-			PictureFlipVertical(arr,MATRIX_SIZE);
+			PictureFlip(arr,MATRIX_SIZE,HERIZONTICAL);
 			break;
 		case -1:
 			loop = 0;
@@ -52,20 +52,9 @@ void PictureRotate(int* mat, int size, int clockwise)
 	matrixsqr_print(mat,size);
 }
 
-void PictureFlipVertical(int* mat, int size)
+void PictureFlip(int* mat, int size, int vertical)
 {
-	int i;
-	for(i = 0 ; i < size/2 ; i++)
-		matrix_swap_collums(mat,i,size-i-1,size);
-	print_picture_after_message();
-	matrixsqr_print(mat,size);
-}
-
-void PictureFlipHerizontical(int* mat, int size)
-{
-	int i;
-	for(i = 0 ; i < size/2 ; i++)
-		matrix_swap_rows(mat,i,size-i-1,size);
+	matrix_flip(mat,size,vertical);
 	print_picture_after_message();
 	matrixsqr_print(mat,size);
 }
