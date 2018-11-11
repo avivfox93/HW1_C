@@ -8,7 +8,7 @@
 #ifndef PICTURE_MANIPULATE_H_
 #define PICTURE_MANIPULATE_H_
 
-#define MATRIX_SIZE 3
+#define MATRIX_SIZE 4
 
 void PictureManipulation();
 void PictureRotate(int*,int,int);

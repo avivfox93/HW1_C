@@ -13,17 +13,14 @@
 
 void matrix_print(const int*,int,int);
 void matrixsqr_print(const int*,int);
-int* matrix_create(int,int);
-int* matrix_create_rand(int,int);
-int* matrix_game_create(int,int);
+void matrix_create(int*,int,int);
+void matrix_create_rand(int*,int,int);
+//int* matrix_game_create(int,int);
 int matrix_find_num(const int*,int,int,int);
-int* matrixsqr_create(int);
+void matrix_rotate(int*,int,int);
+void matrixsqr_create(int*,int);
 void matrix_swap(int*,int,int,int,int,int);
 void matrix_swap_collums(int*,int,int,int);
 void matrix_swap_rows(int*,int,int,int);
-void matrix_copy_row(const int*,int*,int,int);
-void matrix_copy_colum(const int*,int*,int,int);
-void matrix_copy_row_to_colum(const int*,int*,int,int,int);
-void matrix_copy_row_to_colum_rev(const int*,int*,int,int,int);
 
 #endif /* MATRIX_UTILS_H_ */

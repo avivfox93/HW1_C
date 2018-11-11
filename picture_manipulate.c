@@ -13,8 +13,9 @@
 
 void PictureManipulation()
 {
-	int in,loop;
-	int* arr = matrixsqr_create(MATRIX_SIZE);
+	int in,loop,mat[MATRIX_SIZE][MATRIX_SIZE],*arr;
+	arr = &mat[0][0];
+	matrixsqr_create(arr,MATRIX_SIZE);
 	matrixsqr_print(arr,MATRIX_SIZE);
 	loop = 1;
 	do
@@ -24,10 +25,10 @@ void PictureManipulation()
 		switch(in)
 		{
 		case 1:
-			PictureRotate(arr,1,MATRIX_SIZE);
+			PictureRotate(arr,MATRIX_SIZE,1);
 			break;
 		case 2:
-			PictureRotate(arr,0,MATRIX_SIZE);
+			PictureRotate(arr,MATRIX_SIZE,0);
 			break;
 		case 3:
 			PictureFlipHerizontical(arr,MATRIX_SIZE);
@@ -44,15 +45,11 @@ void PictureManipulation()
 	}while(loop);
 }
 
-void PictureRotate(int* mat, int clockwise, int size)
+void PictureRotate(int* mat, int size, int clockwise)
 {
-	int i,*res;
-	res = malloc(sizeof(int)*size*size);
-	for(i = 0 ; i < size ; i++)
-		if(clockwise)matrix_copy_row_to_colum(mat,res,i,size-1-i,size);
-		else matrix_copy_row_to_colum_rev(mat,res,i,i,size);
+	matrix_rotate(mat,size,clockwise);
 	print_picture_after_message();
-	matrixsqr_print(res,size);
+	matrixsqr_print(mat,size);
 }
 
 void PictureFlipVertical(int* mat, int size)

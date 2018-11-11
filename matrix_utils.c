@@ -27,25 +27,25 @@ void matrixsqr_print(const int* mat,int size){
 	matrix_print(mat,size,size);
 }
 
-int* matrix_create(int n, int m)
-{
-	int i,*res;
-	res = malloc(sizeof(int)*n*m);
-	for(i = 0 ; i < n*m ; i++)
-	{
-		*(res + i) = i;
-	}
-	return res;
-}
-
-int* matrix_create_rand(int n,int m)
+void matrix_create(int* mat,int n, int m)
 {
 	int i;
-	int* res = malloc(sizeof(int)*n*m);
-	int* mat = res;
+	for(i = 0 ; i < n*m ; i++,mat++)
+	{
+		mat = i;
+	}
+}
+
+void matrix_create_rand(int* mat, int n,int m)
+{
+	int i;
 	for(i = 0 ; i < n*m ; i++,mat++)
 		*mat = (rand()%MAX_RAND_NUM);
-	return res;
+}
+
+void matrixsqr_create(int* mat,int size)
+{
+	matrix_create_rand(mat,size,size);
 }
 
 int matrix_find_num(const int* mat, int num, int n, int m)
@@ -54,11 +54,6 @@ int matrix_find_num(const int* mat, int num, int n, int m)
 	for(i = 0 ; i < n*m ; i++)
 			if(*mat == num)return 1;
 	return 0;
-}
-
-int* matrixsqr_create(int size)
-{
-	return matrix_create(size,size);
 }
 
 void matrix_swap(int* mat, int n1, int m1, int n2, int m2, int rowsize)
@@ -79,6 +74,35 @@ void matrix_swap_collums(int* mat,int c1,int c2,int size)
 	}
 }
 
+void matrix_rotate(int* mat, int size, int clockwise)
+{
+	int i,j;
+		for(i = 0 ; i < size/2 ; i++)
+		{
+			for(j = i ; j < size-i-1 ; j++)
+			{
+				int temp = *(mat + i*size + j);
+				int* top = (mat + i*size + j); //T
+				int* right = (mat + j*(size) + size - 1 - i); // R
+				int* bottom = (mat + (size-1-i)*size + size - 1 - j); //B
+				int* left = (mat + (size - 1 - j)*size + i); //L
+				if(clockwise)
+				{
+					*top = *left;
+					*left = *bottom;
+					*bottom = *right;
+					*right = temp;
+				}else
+				{
+					*top = *right;
+					*right = *bottom;
+					*bottom = *left;
+					*left = temp;
+				}
+			}
+		}
+}
+
 void matrix_swap_rows(int* mat, int r1, int r2, int size)
 {
 	int i;
@@ -88,32 +112,4 @@ void matrix_swap_rows(int* mat, int r1, int r2, int size)
 		*(mat + r1*size + i) = *(mat + r2*size + i);
 		*(mat + r2*size + i) = temp;
 	}
-}
-
-void matrix_copy_row(const int* mat, int* res, int row, int size)
-{
-	int i;
-	for(i = 0 ; i < size ; i++)
-		*(res + i + row*size) = *(mat + i + row*size);
-}
-
-void matrix_copy_colum(const int* mat, int* res, int col, int size)
-{
-	int i;
-	for(i = 0 ; i < size ; i++)
-		*(res + i*size + col) = *(mat + i*size + col);
-}
-
-void matrix_copy_row_to_colum(const int* mat, int* res, int row, int col, int size)
-{
-	int i;
-	for(i = 0 ; i < size ; i++)
-		*(res + i*size + col) = *(mat + i + row*size);
-}
-
-void matrix_copy_row_to_colum_rev(const int* mat, int* res, int row, int col, int size)
-{
-	int i;
-	for(i = 0 ; i < size ; i++)
-		*(res + size*(size-i-1) + col) = *(mat + i + row*size);
 }
