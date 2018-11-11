@@ -32,7 +32,7 @@ void matrix_create(int* mat,int n, int m)
 	int i;
 	for(i = 0 ; i < n*m ; i++,mat++)
 	{
-		mat = i;
+		*mat = i;
 	}
 }
 
