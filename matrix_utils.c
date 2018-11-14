@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// Print matrix
 void matrix_print(const int* mat, int n, int m)
 {
 	int i,j;
@@ -23,10 +24,12 @@ void matrix_print(const int* mat, int n, int m)
 	putchar('\n');
 }
 
+// Print sqr matrix
 void matrixsqr_print(const int* mat,int size){
 	matrix_print(mat,size,size);
 }
 
+// Initialize matrix with numbers from 0 to n*m
 void matrix_create(int* mat,int n, int m)
 {
 	int i;
@@ -36,6 +39,7 @@ void matrix_create(int* mat,int n, int m)
 	}
 }
 
+// Initialize matrix with random numbers from 0 to MAX_RAND_NUM
 void matrix_create_rand(int* mat, int n,int m)
 {
 	int i;
@@ -43,11 +47,13 @@ void matrix_create_rand(int* mat, int n,int m)
 		*mat = (rand()%MAX_RAND_NUM);
 }
 
+// Initialize sqr matrix with numbers from 0 to n*n
 void matrixsqr_create(int* mat,int size)
 {
 	matrix_create_rand(mat,size,size);
 }
 
+// If num is in matrix, returns its index. if not found returns -1
 int matrix_find_num(const int* mat, int num, int n, int m)
 {
 	int i;
@@ -56,6 +62,7 @@ int matrix_find_num(const int* mat, int num, int n, int m)
 	return 0;
 }
 
+// Swap mat[n1][m1] with mat[n2][m2]
 void matrix_swap(int* mat, int n1, int m1, int n2, int m2, int rowsize)
 {
 	int temp = *(mat + n1*rowsize + m1);
@@ -63,29 +70,24 @@ void matrix_swap(int* mat, int n1, int m1, int n2, int m2, int rowsize)
 	*(mat + n2*rowsize + m2) = temp;
 }
 
+// Swap collum c1 with collum c2
 void matrix_swap_collums(int* mat,int c1,int c2,int size)
 {
 	int i;
 	for(i = 0 ; i < size ; i++)
-	{
-		int temp = *(mat + c1 + i*size);
-		*(mat + c1 + i*size) =  *(mat + c2 + i*size);
-		*(mat + c2 + i*size) = temp;
-	}
+		swap((mat + c1 + i*size),(mat + c2 + i*size));
 }
 
+// Swap row r1 with row r2
 void matrix_swap_rows(int* mat, int r1, int r2, int size)
 {
 	int i;
 	for(i = 0 ; i < size ; i++)
-	{
-		int temp = *(mat + r1*size + i);
-		*(mat + r1*size + i) = *(mat + r2*size + i);
-		*(mat + r2*size + i) = temp;
-	}
+		swap((mat + r1*size + i),(mat + r2*size + i));
 }
 
-void matrix_rotate(int* mat, int size, int clockwise)
+// Rotate the matrix by 90 degrees(CLOCKWISE or CCLOCKWISE)
+void matrix_rotate(int* mat, int size, int dir)
 {
 	int i,j;
 		for(i = 0 ; i < size/2 ; i++)
@@ -97,7 +99,7 @@ void matrix_rotate(int* mat, int size, int clockwise)
 				int* right = (mat + j*(size) + size - 1 - i); // R
 				int* bottom = (mat + (size-1-i)*size + size - 1 - j); //B
 				int* left = (mat + (size - 1 - j)*size + i); //L
-				if(clockwise)
+				if(dir == CLOCKWISE)
 				{
 					*top = *left;
 					*left = *bottom;
@@ -114,10 +116,19 @@ void matrix_rotate(int* mat, int size, int clockwise)
 		}
 }
 
-void matrix_flip(int* mat, int size, int vertical)
+// Swap all Rows/Collums(HERIZONTICAL/VERTICAL) in matrix
+void matrix_flip(int* mat, int size, int dir)
 {
 	int i;
 		for(i = 0 ; i < size/2 ; i++)
-			if(vertical) matrix_swap_rows(mat,i,size-i-1,size);
+			if(dir == VERTICAL) matrix_swap_rows(mat,i,size-i-1,size);
 			else matrix_swap_collums(mat,i,size-i-1,size);
+}
+
+// Swap i with j
+void swap(int* i, int* j)
+{
+	int temp = *i;
+	*i = *j;
+	*j = temp;
 }

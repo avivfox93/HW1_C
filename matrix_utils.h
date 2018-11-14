@@ -8,6 +8,11 @@
 #ifndef MATRIX_UTILS_H_
 #define MATRIX_UTILS_H_
 
+#define CLOCKWISE 1
+#define CCLOCKWISE 0
+
+#define VERTICAL 1
+#define HERIZONTICAL 0
 
 #define MAX_RAND_NUM 100
 
@@ -22,5 +27,6 @@ void matrix_swap(int*,int,int,int,int,int);
 void matrix_swap_collums(int*,int,int,int);
 void matrix_swap_rows(int*,int,int,int);
 void matrix_flip(int*,int,int);
+void swap(int*, int*);
 
 #endif /* MATRIX_UTILS_H_ */
