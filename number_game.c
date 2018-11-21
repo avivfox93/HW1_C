@@ -25,7 +25,8 @@ void NumberGame()
 	do
 	{
 		matrix_print(board,N,M);
-		do{
+		do
+		{
 			puts(GAME_STEP_MESSAGE);
 			scanf("%d",&in);
 			valid = MakeStep(board,N,M,in);
