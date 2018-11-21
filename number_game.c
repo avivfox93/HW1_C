@@ -9,6 +9,7 @@
 #include "messages.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <time.h>
 
 #define N 4
 #define M 4
@@ -37,6 +38,7 @@ void NumberGame()
 void BoardShuffle(int* board, int n, int m)
 {
 	int i;
+	srand(time(0));
 	for(i = 0 ; i < SHUFFLE_COUNT ; i++)
 	{
 		matrix_swap(board,rand()%n,rand()%m,rand()%n,rand()%m,n);
@@ -81,7 +83,6 @@ int MakeStep(int* board, int n, int m, int num)
 					return 1;
 				}
 				return 0;
-
 			}
 		}
 	}

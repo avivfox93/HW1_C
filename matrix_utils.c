@@ -8,6 +8,7 @@
 #include "matrix_utils.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 // Print matrix
 void matrix_print(const int* mat, int n, int m)
@@ -43,6 +44,7 @@ void matrix_create(int* mat,int n, int m)
 void matrix_create_rand(int* mat, int n,int m)
 {
 	int i;
+	srand(time(0));
 	for(i = 0 ; i < n*m ; i++,mat++)
 		*mat = (rand()%MAX_RAND_NUM);
 }
