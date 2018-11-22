@@ -11,8 +11,8 @@
 #define SHUFFLE_COUNT 30
 
 void NumberGame();
-void BoardShuffle(int*,int,int);
-int MakeStep(int*,int,int,int);
-int CheckForWinner(const int*,int,int);
+void board_shuffle(int*,int,int);
+int make_step(int*,int,int,int);
+int check_for_winner(const int*,int,int);
 
 #endif /* NUMBER_GAME_H_ */

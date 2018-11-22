@@ -21,7 +21,7 @@ void NumberGame()
 	matrix_create(board,N,M);
 //	int b[N][M] = {{1,2,3,4},{5,6,7,8},{9,10,11,12},{13,14,0,15}};
 //	board = (int*)b;
-	BoardShuffle(board,N,M);
+	board_shuffle(board,N,M);
 	do
 	{
 		matrix_print(board,N,M);
@@ -29,14 +29,14 @@ void NumberGame()
 		{
 			puts(GAME_STEP_MESSAGE);
 			scanf("%d",&in);
-			valid = MakeStep(board,N,M,in);
+			valid = make_step(board,N,M,in);
 			if(!valid)puts(GAME_INVALID_STEP);
 		}while(!valid);
-	}while(!CheckForWinner(board,N,M));
+	}while(!check_for_winner(board,N,M));
 	puts(GAME_WIN_MESSAGE);
 }
 
-void BoardShuffle(int* board, int n, int m)
+void board_shuffle(int* board, int n, int m)
 {
 	int i;
 	srand(time(0));
@@ -46,7 +46,7 @@ void BoardShuffle(int* board, int n, int m)
 	}
 }
 
-int CheckForWinner(const int* board, int n, int m)
+int check_for_winner(const int* board, int n, int m)
 {
 
 	int i,last;
@@ -60,7 +60,7 @@ int CheckForWinner(const int* board, int n, int m)
 	return 1;
 }
 
-int MakeStep(int* board, int n, int m, int num)
+int make_step(int* board, int n, int m, int num)
 {
 	int i,j,*start;
 	start = board;
