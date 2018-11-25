@@ -42,7 +42,7 @@ void board_shuffle(int* board, int n, int m)
 	srand(time(0));
 	for(i = 0 ; i < SHUFFLE_COUNT ; i++)
 	{
-		matrix_swap(board,rand()%n,rand()%m,rand()%n,rand()%m,n);
+		matrix_swap(board,rand()%n,rand()%m,rand()%n,rand()%m,m);
 	}
 }
 
